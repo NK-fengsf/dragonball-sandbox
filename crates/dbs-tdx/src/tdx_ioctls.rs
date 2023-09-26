@@ -166,7 +166,7 @@ pub fn tdx_init(vm_fd: &RawFd, cpu_id: &CpuId, max_vcpus: u32) -> Result<(), Tdx
     let data = TdxInitVm {
         max_vcpus,
         tsc_khz: 0,
-        attributes: 0, // TDX1_TD_ATTRIBUTE_DEBUG,
+        attributes: 1 << 28, // TDX1_TD_ATTRIBUTE_DEBUG,
         cpuid: cpu_id.as_fam_struct_ptr() as u64,
         mrconfigid: [0; 6],
         mrowner: [0; 6],
